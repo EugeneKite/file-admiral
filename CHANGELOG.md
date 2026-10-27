@@ -21,6 +21,9 @@
   "differs at byte 0"; byte comparison tolerates short reads on network volumes.
 
 ### Fixed (robustness)
+- Finder tags are written with their colors in the extended attribute itself, the way Finder does it, instead of
+  by name only. Names alone leave the color to the per-user Finder tag database, which is empty where Finder has
+  never run, so tags lost their colors (seen on CI).
 - Directory listing runs off the main thread: huge folders and slow network shares show a loading state
   instead of freezing the app. Small local folders behave exactly as before.
 - Compare by Content computes the diff in the background (large files no longer block the UI).

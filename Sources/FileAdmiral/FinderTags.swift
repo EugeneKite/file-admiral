@@ -52,9 +52,24 @@ enum FinderTags {
         }
     }
 
-    /// Sets the tags of a file (by name; Finder assigns the colors of known tags).
+    /// Sets the tags of a file, writing the extended attribute in Finder's own "Name\nColorIndex" form.
+    /// Writing names alone (`NSURL.tagNamesKey`) leaves the colors to the per-user Finder tag database, which is
+    /// empty on an account where Finder has never run (such as a CI runner), so the colors would be lost.
     static func write(_ url: URL, _ tags: [FinderTag]) throws {
-        try (url as NSURL).setResourceValue(tags.map(\.name), forKey: .tagNamesKey)
+        if tags.isEmpty {
+            if removexattr(url.path, attribute, XATTR_NOFOLLOW) != 0 && errno != ENOATTR {
+                throw NSError(domain: NSPOSIXErrorDomain, code: Int(errno),
+                              userInfo: [NSLocalizedDescriptionKey: String(cString: strerror(errno))])
+            }
+            return
+        }
+        let list = tags.map { "\($0.name)\n\($0.colorIndex)" }
+        let data = try PropertyListSerialization.data(fromPropertyList: list, format: .binary, options: 0)
+        let result = data.withUnsafeBytes { setxattr(url.path, attribute, $0.baseAddress, data.count, 0, XATTR_NOFOLLOW) }
+        if result != 0 {
+            throw NSError(domain: NSPOSIXErrorDomain, code: Int(errno),
+                          userInfo: [NSLocalizedDescriptionKey: String(cString: strerror(errno))])
+        }
     }
 
     /// Adds `tag` to every item, or removes it from all when every item already has it.
