@@ -1,0 +1,24 @@
+{
+    "configurations": [
+        {
+            "type": "swift",
+            "request": "launch",
+            "args": [],
+            "cwd": "${workspaceFolder:totalcommander}",
+            "name": "Debug FileAdmiral",
+            "target": "FileAdmiral",
+            "configuration": "debug",
+            "preLaunchTask": "swift: Build Debug FileAdmiral"
+        },
+        {
+            "type": "swift",
+            "request": "launch",
+            "args": [],
+            "cwd": "${workspaceFolder:totalcommander}",
+            "name": "Release FileAdmiral",
+            "target": "FileAdmiral",
+            "configuration": "release",
+            "preLaunchTask": "swift: Build Release FileAdmiral"
+        }
+    ]
+}

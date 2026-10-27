@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>CFBundleName</key>
+    <string>FileAdmiral</string>
+    <key>CFBundleDisplayName</key>
+    <string>FileAdmiral</string>
+    <key>CFBundleExecutable</key>
+    <string>FileAdmiral</string>
+    <key>CFBundleIdentifier</key>
+    <string>io.github.eugenekite.fileadmiral</string>
+    <key>CFBundleIconFile</key>
+    <string>AppIcon</string>
+    <key>CFBundlePackageType</key>
+    <string>APPL</string>
+    <key>CFBundleShortVersionString</key>
+    <string>1.0</string>
+    <key>CFBundleVersion</key>
+    <string>1</string>
+    <key>LSMinimumSystemVersion</key>
+    <string>13.0</string>
+    <key>LSApplicationCategoryType</key>
+    <string>public.app-category.utilities</string>
+    <key>NSHighResolutionCapable</key>
+    <true/>
+    <key>NSPrincipalClass</key>
+    <string>NSApplication</string>
+    <key>NSHumanReadableCopyright</key>
+    <string>A Total Commander–style dual-pane file manager for macOS.</string>
+    <key>NSDesktopFolderUsageDescription</key>
+    <string>FileAdmiral needs access to show and manage files on your Desktop.</string>
+    <key>NSDocumentsFolderUsageDescription</key>
+    <string>FileAdmiral needs access to show and manage files in Documents.</string>
+    <key>NSDownloadsFolderUsageDescription</key>
+    <string>FileAdmiral needs access to show and manage files in Downloads.</string>
+    <key>NSRemovableVolumesUsageDescription</key>
+    <string>FileAdmiral needs access to show and manage files on removable volumes.</string>
+    <key>NSNetworkVolumesUsageDescription</key>
+    <string>FileAdmiral needs access to show and manage files on network volumes.</string>
+    <key>NSAppleEventsUsageDescription</key>
+    <string>FileAdmiral asks Finder to show Get Info windows.</string>
+</dict>
+</plist>
